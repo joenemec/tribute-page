@@ -1,0 +1,332 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 38px;
+}
+
+p {
+  line-height: 1.6em;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+#home {
+  height: 100vh;
+  width: auto;
+  background-image: url('../images/virgil-letters.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+
+/* navigation styles start here */
+header {
+  background: transparent;
+  text-transform: uppercase;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+}
+
+/* making a hamburger menu */
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: #000;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  /* need the content property or it defaults to none and nothing shows up*/
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: transparent;
+  width: 100%;
+  /* display: none; */
+  transform: scale(1,0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+nav a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+  color: #e50505;
+}
+
+.nav-toggle:checked ~ nav {
+  /* display: none; */
+  transform: scale(1,1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+
+/* about */
+#about {
+  text-align: center;
+  background: #e50505;
+}
+
+.abt-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.abt-row .abt-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #e50505;
+  color: #000;
+  height: 400px;
+}
+
+.abt-column .btn {
+  background: #000;
+  color: #f4f4f4;
+  text-transform: uppercase;
+  font-weight: bolder;
+  padding: 15px;
+}
+
+.abt-column .btn:hover {
+  color: #e50505;
+  background: repeating-linear-gradient(-55deg, #000, #000 20px, #f4f4f4 20px, #f4f4f4 40px);
+  cursor: pointer;
+}
+
+
+/* work */
+#work .heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrk-column {
+  display: flex;
+}
+
+.image {
+  position: relative;
+  width: 40%;
+  margin: 5px 10px;
+}
+
+.image-img {
+  width: 100%;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.image-overlay:hover {
+  opacity: 1;
+}
+
+.image-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.image-description {
+  font-size: .95em;
+  margin-top: 0.25em;
+  text-align: center;
+}
+
+
+/* footer */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e50505;
+  height: 70px;
+}
+
+footer p {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+
+
+
+@media (max-width: 800px) {
+  .abt-row {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wrk-column {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image {
+    height: auto;
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  body {
+    width: fit-content;
+  }
+
+  #home {
+    background-image: url('../images/virgil-letters.jpg');
+    height: 400px;
+  }
+}
+
+
+
+
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+
+  .logo {
+    grid-column: 2 / 3;
+  }
+
+  nav {
+    all: unset;
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+
+  nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: #000;
+    position: absolute;
+    bottom: -.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+
+  nav a:hover::before {
+    transform: scale(1, 1);
+  }
+}
